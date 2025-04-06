@@ -1,95 +1,120 @@
-/* General container styling */
-.phase-section {
-  background-color: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 24px;
-  margin: 24px 0;
-  transition: transform 0.2s ease-in-out;
-}
+/* App.css - Luxurious, Elegant Design */
 
-.phase-section:hover {
-  transform: translateY(-4px);
-}
-
-/* Header styling */
-.phase-section h2 {
-  font-size: 1.8rem;
-  color: #2c3e50;
-  margin-bottom: 16px;
-  border-left: 6px solid #4CAF50;
-  padding-left: 12px;
-}
-
-/* Feature items */
-.ai-feature {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 16px;
-  padding: 12px 16px;
-  background-color: #f9f9f9;
-  border-left: 4px solid #4CAF50;
-  border-radius: 12px;
-  transition: background-color 0.2s;
-}
-
-.ai-feature:hover {
-  background-color: #eefaf0;
-}
-
-.ai-feature .emoji {
-  font-size: 1.6rem;
-  margin-top: 4px;
-}
-
-.ai-feature p {
+body {
   margin: 0;
-  font-size: 1rem;
-  color: #34495e;
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px;
+  color: #333;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .phase-section {
-    padding: 16px;
-  }
-
-  .ai-feature {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-.modern-container {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to right, #00c6ff, #0072ff);
-  color: white;
-  padding: 20px;
-  max-width: 1200px;
-  margin: auto;
-  border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+.App {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+  padding: 40px;
+  width: 90%;
+  max-width: 800px;
+  transition: all 0.3s ease;
 }
 
-.modern-header {
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 20px;
+h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
   text-align: center;
-  font-size: 28px;
-  font-weight: bold;
-  border-radius: 10px;
 }
 
-.modern-card {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  border-radius: 10px;
+h2 {
+  font-size: 1.5rem;
+  margin: 20px 0 10px;
+  text-align: center;
+}
+
+input,
+button,
+textarea {
+  padding: 12px 15px;
   margin: 10px 0;
-  transition: all 0.3s ease-in-out;
-
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  box-sizing: border-box;
 }
 
-.modern-card:hover {
-  transform: translateY(-5px) scale(1.05);
+button {
+  background-color: #4b6cb7;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #3b5897;
+}
+
+.event-item {
+  background: #f9f9f9;
+  margin-top: 10px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.chat-container {
+  margin-top: 30px;
+}
+.phase2-container {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 20px;
+  background: linear-gradient(to right, #fdfbfb, #ebedee);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.phase2-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #333;
+  font-weight: 600;
+}
+
+.phase2-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.phase2-card {
+  background: white;
+  border-radius: 16px;
+  padding: 25px;
+  width: 280px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.phase2-card .icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.phase2-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.phase2-card p {
+  font-size: 0.95rem;
+  color: #555;
 }
