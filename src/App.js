@@ -3,6 +3,7 @@ import Project from "./Project"; // Make sure this matches your component file
 import './App.css';
 import MarketingDashboard from "./MarketingDashboard";
 import EventMonitoring from "./EventMonitoring";
+import EventPlanner from "./EventPlanner";
 function App() {
   return (
     <div className="App">
@@ -10,6 +11,7 @@ function App() {
       <Project />
       <MarketingDashboard />
       <EventMonitoring />
+      <EventPlanner />
     </div>
   );
 }

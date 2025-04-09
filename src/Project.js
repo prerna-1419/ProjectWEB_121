@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import { motion } from "framer-motion";
 
 const fadeIn = {
@@ -15,9 +14,7 @@ const Project = () => {
 
   const [budget, setBudget] = useState("");
   const [venueNeeds, setVenueNeeds] = useState("");
-  const [workflow, setWorkflow] = useState([]);
-  const [venueSuggestions, setVenueSuggestions] = useState([]);
-  const [vendorSuggestions, setVendorSuggestions] = useState([]);
+  const [venueInfo, setVenueInfo] = useState(null);
 
   useEffect(() => {
     const storedEvents = JSON.parse(localStorage.getItem("events")) || [];
@@ -62,27 +59,32 @@ const Project = () => {
     }
   };
 
-  const generateAISuggestions = () => {
-    if (!budget) return;
+  const getVenueInfo = (type) => {
+    switch (type.toLowerCase()) {
+      case 'wedding':
+        return {
+          image: '/download.jpeg',
+          description: 'Elegant wedding venue with floral decor and spacious layout.',
+        };
+      case 'corporate':
+        return {
+          image: '/event-venues-north-america-civic-on-third-min.jpg',
+          description: 'Professional space ideal for corporate meetings and presentations.',
+        };
+      case 'personal':
+        return {
+          image: '/Event-Venue-1024x452.jpg',
+          description: 'Cozy and versatile venue perfect for birthdays or private parties.',
+        };
+      default:
+        return null;
+    }
+  };
 
-    setVenueSuggestions([
-      { name: "Skyline Hall", preview: "3D View", location: "NYC" },
-      { name: "Grand Vista Hotel", preview: "3D View", location: "LA" }
-    ]);
-
-    setVendorSuggestions([
-      "Budget Catering Co.",
-      "Affordable A/V Services",
-      "Local Decor Pros"
-    ]);
-
-    setWorkflow([
-      "\uD83D\uDCC5 Define objectives",
-      "\uD83D\uDCCA Allocate budget",
-      "\uD83D\uDCCD Choose venue",
-      "\uD83D\uDD0C Book vendors",
-      "\uD83D\uDCE2 Start promotion"
-    ]);
+  const handleVenueGeneration = () => {
+    if (!budget || !venueNeeds) return;
+    const info = getVenueInfo(venueNeeds);
+    setVenueInfo(info);
   };
 
   return (
@@ -95,56 +97,37 @@ const Project = () => {
     >
       <h1>AI Event Manager</h1>
 
-      {/* Phase 1 */}
+      {/* Phase 1 - Venue Suggestions */}
       <motion.section variants={fadeIn} transition={{ duration: 0.6, delay: 0.2 }}>
-      <h2>📌 Phase 1: Event Planning & Design</h2>
+        <h2>📌 Venue Suggestion</h2>
 
         <input
           type="number"
-          placeholder="Enter your budget \uD83D\uDCB0"
+          placeholder="Enter your budget 💰"
           value={budget}
           onChange={(e) => setBudget(e.target.value)}
         />
         <input
           type="text"
-          placeholder="Describe your venue needs \uD83C\uDFE8"
+          placeholder="Describe your venue needs 🏨 (wedding, corporate, personal)"
           value={venueNeeds}
           onChange={(e) => setVenueNeeds(e.target.value)}
         />
-        <button onClick={generateAISuggestions}>Generate AI Suggestions ⚙️</button>
+        <button onClick={handleVenueGeneration}>Show Venue</button>
 
-        {venueSuggestions.length > 0 && (
-          <div>
-            <h4>\uD83C\uDFE8 AI Venue Suggestions</h4>
-            {venueSuggestions.map((venue, index) => (
-              <motion.div key={index} whileHover={{ scale: 1.02 }}>
-                <strong>{venue.name}</strong> ({venue.location}) - <a href="#">{venue.preview}</a>
-              </motion.div>
-            ))}
-          </div>
-        )}
-
-        {vendorSuggestions.length > 0 && (
-          <div>
-            <h4> AI Vendor Suggestions</h4>
-            <ul>
-              {vendorSuggestions.map((vendor, idx) => (
-                <motion.li key={idx} whileHover={{ scale: 1.02 }}>{vendor}</motion.li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {workflow.length > 0 && (
-          <div>
-            <h2>📌 Phase 1: Event Planning & Design</h2>
-
-            <ol>
-              {workflow.map((task, i) => (
-                <motion.li key={i} variants={fadeIn}>{task}</motion.li>
-              ))}
-            </ol>
-          </div>
+        {venueInfo && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-6 text-center"
+          >
+            <img
+              src={venueInfo.image}
+              alt={venueNeeds}
+              className="w-full max-w-md mx-auto h-64 object-cover rounded-xl shadow-md mb-4"
+            />
+            <p className="text-gray-700 text-lg font-medium">{venueInfo.description}</p>
+          </motion.div>
         )}
       </motion.section>
 
@@ -174,7 +157,7 @@ const Project = () => {
           transition={{ duration: 0.4, delay: index * 0.1 }}
         >
           <strong>{event.title}</strong> - {event.date} <br />
-          {event.description} <br /> \uD83D\uDCCD {event.location}
+          {event.description} <br /> 📍 {event.location}
         </motion.div>
       ))}
 
