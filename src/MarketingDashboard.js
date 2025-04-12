@@ -43,9 +43,15 @@ const MarketingDashboard = () => {
             <Card>
               <h3 className="text-xl font-semibold mb-2">🔗 Social Media</h3>
               <div className="flex space-x-4">
-                <Button>🐦 Twitter</Button>
-                <Button>💼 LinkedIn</Button>
-                <Button>📘 Facebook</Button>
+              <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer">
+              <Button>🐦 Twitter</Button>
+              </a>
+              <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+              <Button>💼 LinkedIn</Button>
+              </a>
+              <a href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer">
+              <Button>📘 Facebook</Button>
+              </a>
               </div>
             </Card>
           </motion.div>

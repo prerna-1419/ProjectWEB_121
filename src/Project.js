@@ -95,7 +95,7 @@ const Project = () => {
       variants={fadeIn}
       transition={{ duration: 0.6 }}
     >
-      <h1>AI Event Manager</h1>
+     
 
       {/* Phase 1 - Venue Suggestions */}
       <motion.section variants={fadeIn} transition={{ duration: 0.6, delay: 0.2 }}>
