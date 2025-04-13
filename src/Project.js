@@ -95,12 +95,9 @@ const Project = () => {
       variants={fadeIn}
       transition={{ duration: 0.6 }}
     >
-     
-
       {/* Phase 1 - Venue Suggestions */}
       <motion.section variants={fadeIn} transition={{ duration: 0.6, delay: 0.2 }}>
         <h2>📌 Venue Suggestion</h2>
-
         <input
           type="number"
           placeholder="Enter your budget 💰"
