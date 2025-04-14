@@ -9,9 +9,6 @@ const fadeIn = {
 const Project = () => {
   const [events, setEvents] = useState([]);
   const [filterText, setFilterText] = useState("");
-  const [chatMessages, setChatMessages] = useState([]);
-  const [chatInput, setChatInput] = useState("");
-
   const [budget, setBudget] = useState("");
   const [venueNeeds, setVenueNeeds] = useState("");
   const [venueInfo, setVenueInfo] = useState(null);
@@ -39,25 +36,6 @@ const Project = () => {
     event.title.toLowerCase().includes(filterText.toLowerCase()) ||
     event.location.toLowerCase().includes(filterText.toLowerCase())
   );
-
-  const handleChat = () => {
-    if (!chatInput) return;
-    const userMessage = { type: "user", text: chatInput };
-    const botMessage = { type: "bot", text: generateBotResponse(chatInput) };
-    setChatMessages([...chatMessages, userMessage, botMessage]);
-    setChatInput("");
-  };
-
-  const generateBotResponse = (input) => {
-    input = input.toLowerCase();
-    if (input.includes("event")) {
-      return "I can help you with event details. Please specify the event name!";
-    } else if (input.includes("location")) {
-      return "You can find event locations in the event details section!";
-    } else {
-      return "I'm still learning! Try asking something about events.";
-    }
-  };
 
   const getVenueInfo = (type) => {
     switch (type.toLowerCase()) {
@@ -157,31 +135,6 @@ const Project = () => {
           {event.description} <br /> 📍 {event.location}
         </motion.div>
       ))}
-
-      {/* Chatbot */}
-      <div className="chatbot-container">
-        <h2>Chatbot</h2>
-        <div>
-          {chatMessages.map((msg, index) => (
-            <motion.div
-              key={index}
-              className={`chat-message ${msg.type}-message`}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-            >
-              {msg.type === "user" ? "You: " : "Bot: "}{msg.text}
-            </motion.div>
-          ))}
-        </div>
-        <input
-          type="text"
-          value={chatInput}
-          onChange={(e) => setChatInput(e.target.value)}
-          placeholder="Ask something..."
-        />
-        <button onClick={handleChat}>Send</button>
-      </div>
     </motion.div>
   );
 };
