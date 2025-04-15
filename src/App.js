@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ContactForm from './ContactForm';
 import Project from "./Project";
+import Chatbot from './Chatbot';
 import MarketingDashboard from "./MarketingDashboard";
 import FeedbackSection from './FeedbackSection';
-import Chatbot from './Chatbot';
+//import Chatbot from './Chatbot';
 import './App.css';
 
 function App() {
@@ -32,9 +33,10 @@ function App() {
   <>
     <h1>AI Event Management System</h1>
     <Project />
+    <Chatbot />
     <MarketingDashboard />
     <FeedbackSection />
-    <Chatbot />
+   
 
     {/* 👇 Logout button at the bottom */}
     <div style={{ textAlign: 'center', margin: '40px 0' }}>
